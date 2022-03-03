@@ -446,7 +446,7 @@ _duo_preauth(struct duo_ctx *ctx, const char *username,
             ret = DUO_OK;
         } else if (strcasecmp(p, "deny") == 0) {
             _duo_seterr(ctx, "%s", output);
-            if (ctx->conv_status != NULL) {
+            if (ctx->conv_status != NULL && !duo_quiet) {
                 ctx->conv_status(ctx->conv_arg, output);
             }
             ret = DUO_ABORT;

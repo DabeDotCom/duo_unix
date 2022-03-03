@@ -41,6 +41,19 @@ static void test_pam_argv_debug() {
     duo_debug = 0;
 }
 
+static void test_pam_argv_quiet() {
+    const char *config = "";
+    const char *argv[] = {"quiet"};
+    int argc = 1;
+    int expected_quiet = 1;
+    duo_quiet = 0;
+
+    parse_argv(&config, argc, argv);
+
+    TEST_ASSERT_EQUAL(expected_quiet, duo_quiet);
+    duo_quiet = 0;
+}
+
 static void test_pam_argv_conf() {
     const char *config = "";
     const char *argv[] = {"conf=hi"};
@@ -58,6 +71,7 @@ int main() {
     RUN_TEST(test_pam_argc_zero);
     RUN_TEST(test_pam_argv_error);
     RUN_TEST(test_pam_argv_debug);
+    RUN_TEST(test_pam_argv_quiet);
     RUN_TEST(test_pam_argv_conf);
     return UNITY_END();
 }

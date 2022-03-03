@@ -81,7 +81,7 @@ def main():
     if opt_host:
         args.append(opt_host)
 
-    config = "auth  required  {libpath}/pam_duo.so conf={duo_config_path} debug".format(
+    config = "auth  required  {libpath}/pam_duo.so conf={duo_config_path} debug quiet".format(
         libpath=paths.topbuilddir + "/pam_duo/.libs", duo_config_path=opt_conf
     )
     with TempPamConfig(config) as config_file:

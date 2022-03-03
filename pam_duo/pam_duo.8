@@ -7,6 +7,8 @@
 .Sh SYNOPSIS
 pam_duo.so
 .Op Cm conf= Ns Aq Ar FILENAME
+.Op Cm debug
+.Op Cm quiet
 .Sh DESCRIPTION
 .Nm
 provides secondary authentication (typically after successful
@@ -20,6 +22,8 @@ Specify an alternate configuration file to load. Default is
 .Pa /etc/duo/pam_duo.conf
 .It debug
 Debug mode; send log messages to stderr instead of syslog.
+.It quiet
+Quiet mode; don't display "denied" error messages.
 .El
 .Sh CONFIGURATION
 The INI-format configuration file must have a
